@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:startup_namer/main.dart';
 
 void main() {
   runApp(const MyApp());
@@ -58,24 +60,41 @@ class _Pertemuan1State extends State<Pertemuan1> {
           children: <Widget>[
             TextFormField(
               decoration: new InputDecoration(
-                labelText: "Teks Input",
-                hintText: "Teks yang akan diinput formatnya sbb",
+                labelText: "Email",
+                hintText: "Masukkan Email",
+                  border: OutlineInputBorder(
+                      borderRadius: new BorderRadius.circular(5)
+                  )
               ),
+
             ),
             Padding(
               padding: EdgeInsets.all(5.0),
             ),
             TextFormField(
               decoration: new InputDecoration(
-                labelText: "Teks Input 2",
-                hintText: "Teks yang akan diinput formatnya sbb",
+                labelText: "Password",
+                hintText: "Masukkan Password",
                 border: OutlineInputBorder(
                    borderRadius: new BorderRadius.circular(5)
                 )
                 ),
             ),
-            ElevatedButton(onPressed: () {}, child: Text(
+            ElevatedButton(onPressed: () async {
+              SharedPreferences pref  = await SharedPreferences.getInstance();
+              await pref.setInt("is_login", 0);
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const Pertemuan1(title: "Halo Push")),
+              );
+            }, child: Text(
               "Submit",
+              style: TextStyle(
+                  color: Colors.white
+              ),
+            )),
+            ElevatedButton(onPressed: () {Navigator.pop(context);}, child: Text(
+              "Logout",
               style: TextStyle(
                   color: Colors.white
               ),

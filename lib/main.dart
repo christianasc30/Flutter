@@ -1,60 +1,112 @@
-// Copyright 2018 The Flutter team. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
-import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+//import 'package:shared_preferences/shared_preferences.dart';
+import 'package:startup_namer/splashscreen.dart';
+
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MaterialApp(
+    home: Splashscreen(title: 'Coba Splash'),
+  ));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Startup Name Generator',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Startup Name Generator'),
-        ),
-        body: Center(
-          child: RandomWords(),
-        ),
-      ),
-    );
-  }
-}
-
-class _RandomWordsState extends State<RandomWords> {
-  final _suggestions = <WordPair>[];
-  final _biggerFont = const TextStyle(fontSize: 18);
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      padding: const EdgeInsets.all(16.0),
-      itemBuilder: /1/ (context, i) {
-        if (i.isOdd) return const Divider(); /2/
-
-        final index = i ~/ 2; /3/
-        if (index >= _suggestions.length) {
-            _suggestions.addAll(generateWordPairs().take(10)); /4/
-        }
-        return ListTile(
-          title: Text(
-            _suggestions[index].asPascalCase,
-            style: _biggerFont,
-          ),
-        );
-      },
-    );
-  }
-}
-
-class RandomWords extends StatefulWidget {
-  const RandomWords({super.key});
-  @override
-  State<RandomWords> createState() => _RandomWordsState();
-}
+// void main() {
+//   runApp(const MyApp());
+// }
+//
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+//
+//   // This widget is the root of your application.
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Flutter Demo',
+//       theme: ThemeData(
+//
+//         primarySwatch: Colors.blue,
+//       ),
+//       home: const MyHomePage(title: 'Flutter Demo Home Page'),
+//     );
+//   }
+// }
+//
+// class MyHomePage extends StatefulWidget {
+//   const MyHomePage({super.key, required this.title});
+//
+//   final String title;
+//
+//   @override
+//   State<MyHomePage> createState() => _MyHomePageState();
+// }
+//
+// class _MyHomePageState extends State<MyHomePage> {
+//   int _counter = 0;
+//
+//   void _incrementCounter() {
+//     setState(() {
+//
+//       _counter++;
+//     });
+//   }
+//
+// void navigatelogin() async{
+//     SharedPreferences pref = await SharedPreferences.getInstance();
+//     int islogin = pref.getInt("is_login");
+//     if (islogin == 1){
+//       Navigator.pushReplacement(
+//           context,
+//           MaterialPageRoute(builder: (context) => Pertemuan1(title: "Halo Push", )),
+//       );
+//     }
+// }
+//   @override
+//   void initState() {
+//
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//
+//     return Scaffold(
+//       appBar: AppBar(
+//
+//         title: Text(widget.title),
+//       ),
+//       body: Center(
+//
+//         child: Column(
+//
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: <Widget>[
+//             const Text(
+//               'You have pushed the button this many times:',
+//             ),
+//             Text(
+//               '$_counter',
+//               style: Theme.of(context).textTheme.headline4,
+//             ),
+//             ElevatedButton(onPressed: () async {
+//               SharedPreferences pref  = await SharedPreferences.getInstance();
+//               await pref.setInt("is_login", 1);
+//               Navigator.pushReplacement(
+//               context,
+//               MaterialPageRoute(builder: (context) => const Pertemuan1(title: "Halo Push")),
+//             );
+//             }, child: Text(
+//               "Login",
+//               style: TextStyle(
+//                   color: Colors.white
+//               ),
+//             )
+//             )
+//           ],
+//         ),
+//       ),
+//       floatingActionButton: FloatingActionButton(
+//         onPressed: _incrementCounter,
+//         tooltip: 'Increment',
+//         child: const Icon(Icons.add),
+//       ), // This trailing comma makes auto-formatting nicer for build methods.
+//     );
+//   }
+// }
