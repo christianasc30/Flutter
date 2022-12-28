@@ -34,7 +34,7 @@ class _homedrawerState extends State<homedrawer> {
             children: [
               UserAccountsDrawerHeader(
                 currentAccountPicture: CircleAvatar(
-                  backgroundImage: AssetImage("images/logo.png"),
+                  backgroundImage: AssetImage("images/foto.png"),
                 ),
                   accountName: Text("Christian"),
                   accountEmail: Text("Christianzyegard@gmail.com")),

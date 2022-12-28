@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:startup_namer/week9.dart';
 import 'dart:async';
+
+import 'package:startup_namer/homedrawer.dart';
+
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key, required this.title});
@@ -14,9 +16,9 @@ class Splashscreen extends StatefulWidget {
 class _SplashscreenState extends State<Splashscreen> {
 
   startSplashscreen() async {
-    var duration = new Duration(seconds: 5);
+    var duration = new Duration(seconds: 2);
     return Timer(duration, () {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Pertemuan1(title: "coba splashscreen"))
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>homedrawer())
       );
     });
   }
@@ -25,7 +27,7 @@ class _SplashscreenState extends State<Splashscreen> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      backgroundColor: Colors.deepPurpleAccent,
+      backgroundColor: Colors.white,
       body: Center(
         child: Image.asset(
           "images/logo.png",
